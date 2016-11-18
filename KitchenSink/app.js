@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 // var mattsProcedure = require('./data');
 var app = express();
 
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(__dirname));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -20,7 +20,7 @@ app.use(function(req,res,next){
 });
 
 app.get('/', function(req, res) {
-	 res.sendFile(path.join(__dirname + '/index.html'));
+	 res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 app.get('/api/data', function(req, res) {
 	// res.json(mattsProcedure);
