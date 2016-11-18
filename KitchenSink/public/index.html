@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/theme-picker.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <style>
-      .custom-btn {
+      #custom-btn {
         background: red;
       }
     </style>
@@ -19,7 +19,7 @@
         <div class="app-header">
               <div class="app-title">
                   <h1>Rappid</h1>
-                  <h1 class="custom-btn">Custom Button</h1>
+                  <h1 id="custom-btn">Custom Button</h1>
               </div>
               <div class="toolbar-container"></div>
         </div>
@@ -81,20 +81,33 @@
     </script>
     <script>
         $(function(){
+          $.ajax({
+            method:"GET",
+            url: "api/data",
+            success: function(res){
+              // console.log(res);
+              joint.setTheme('modern');
+              app = new App.MainView({ el: '#app' });
+              themePicker = new App.ThemePicker({ mainView: app });
+              themePicker.render().$el.appendTo(document.body);
+              app.graph.fromJSON(res);
+            },
+            error: function(err){
+              console.log(err);
+            }
+          });
+          $('#custom-btn').on('click', function() {
             $.ajax({
               url: "api/data",
               success: function(res){
-                // console.log(res);
-                joint.setTheme('modern');
-                app = new App.MainView({ el: '#app' });
-                themePicker = new App.ThemePicker({ mainView: app });
-                themePicker.render().$el.appendTo(document.body);
-                app.graph.fromJSON(res);
+                alert(res);
               },
               error: function(err){
                 console.log(err);
-              },
-          });      
+              }
+            });   
+          });  
+
         });    
     </script>
 </body>
