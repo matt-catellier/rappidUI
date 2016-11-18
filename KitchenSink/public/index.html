@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>Rappid Demo Application</title>
-    <link rel="stylesheet" type="text/css" href="build/rappid.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/theme-picker.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="./build/rappid.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/theme-picker.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
@@ -26,13 +26,13 @@
     </div>
 
     <!-- Rappid/JointJS dependencies: -->
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/lodash/index.js"></script>
-    <script src="../node_modules/backbone/backbone.js"></script>
-    <script src="../node_modules/graphlib/dist/graphlib.core.js"></script>
-    <script src="../node_modules/dagre/dist/dagre.core.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/lodash/index.js"></script>
+    <script src="../../node_modules/backbone/backbone.js"></script>
+    <script src="../../node_modules/graphlib/dist/graphlib.core.js"></script>
+    <script src="../../node_modules/dagre/dist/dagre.core.js"></script>
 
-    <script src="build/rappid.min.js"></script>
+    <script src="./build/rappid.min.js"></script>
 
     <!--[if IE 9]>
         <script>
@@ -42,14 +42,14 @@
     <![endif]-->
 
     <!-- Application files:  -->
-    <script src="js/config/halo.js"></script>
-    <script src="js/config/inspector.js"></script>
-    <script src="js/config/stencil.js"></script>
-    <script src="js/config/toolbar.js"></script>
-    <script src="js/config/sample-graphs.js"></script>
-    <script src="js/views/main.js"></script>
-    <script src="js/views/theme-picker.js"></script>
-    <script src="js/models/joint.shapes.app.js"></script>
+    <script src="./js/config/halo.js"></script>
+    <script src="./js/config/inspector.js"></script>
+    <script src="./js/config/stencil.js"></script>
+    <script src="./js/config/toolbar.js"></script>
+    <script src="./js/config/sample-graphs.js"></script>
+    <script src="./js/views/main.js"></script>
+    <script src="./js/views/theme-picker.js"></script>
+    <script src="./js/models/joint.shapes.app.js"></script>
     <script>
         joint.setTheme('modern');
         app = new App.MainView({ el: '#app' });
@@ -77,6 +77,19 @@
             }
         })();
     </script>
-
+    <script>
+        $(function(){
+            $.ajax({
+              url: "api/data",
+              success: function(res){
+                console.log(res);
+              },
+              error: function(err){
+                console.log(err);
+              },
+          });
+            
+        });    
+    </script>
 </body>
 </html>
