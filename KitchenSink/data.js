@@ -1,4 +1,4 @@
-var data = {  
+var Data = {  
    "cells":[  
       {  
          "type":"basic.Circle",
@@ -24,7 +24,7 @@ var data = {
             },
             "text":{  
                "font-size":15,
-               "text":"Fire\\nIncident",
+               "text":"Learn Rappid",
                "fill":"#b75d32",
                "font-family":"Roboto Condensed",
                "font-weight":"Bold",
@@ -56,7 +56,7 @@ var data = {
                "stroke-dasharray":"0"
             },
             "text":{  
-               "text":"Auto Alarm\\nactivated?",
+               "text":"Have experience?",
                "font-family":"Roboto Condensed",
                "font-size":13,
                "font-weight":"Normal",
@@ -72,8 +72,8 @@ var data = {
       {  
          "type":"basic.Rect",
          "position":{  
-            "x":690,
-            "y":189
+            "x":190,
+            "y":220
          },
          "size":{  
             "width":110,
@@ -95,7 +95,7 @@ var data = {
             },
             "text":{  
                "fill":"#3c4260",
-               "text":"Activate\\nevacuation",
+               "text":"No",
                "font-size":13,
                "font-family":"Roboto Condensed",
                "font-weight":"Bold",
@@ -110,19 +110,19 @@ var data = {
       {  
          "type":"basic.Rect",
          "position":{  
-            "x":860,
-            "y":595
+            "x":690,
+            "y":220
          },
          "size":{  
             "width":110,
-            "height":70
+            "height":50
          },
          "angle":0,
-         "id":"c7459d76-693a-4db3-a82c-2c45d9822c17",
-         "z":6,
+         "id":"c89958a4-a6b6-41b0-88d2-a2ab3b5ce4cx",
+         "z":4,
          "attrs":{  
             "rect":{  
-               "fill":"#dcd7d7",
+               "fill":"#feb663",
                "stroke":"#3c4260",
                "width":50,
                "height":30,
@@ -133,10 +133,10 @@ var data = {
             },
             "text":{  
                "fill":"#3c4260",
-               "text":"Evacuees report\\nto Gathering\\nPoint / Safe Area",
+               "text":"Yes",
                "font-size":13,
                "font-family":"Roboto Condensed",
-               "font-weight":"Normal",
+               "font-weight":"Bold",
                "stroke-width":0
             },
             ".":{  
@@ -146,44 +146,67 @@ var data = {
          }
       },
       {  
-         "type":"basic.Rect",
-         "position":{  
-            "x":860,
-            "y":965
+         "type":"app.Link",
+         "router":{  
+            "name":"normal"
          },
-         "size":{  
-            "width":110,
-            "height":70
+         "connector":{  
+            "name":"normal"
          },
-         "angle":0,
-         "id":"89c096ef-433e-4708-a0d9-302ca9807dc4",
-         "z":9,
+         "source":{  
+            "id": "d2758428-c41b-469a-9f9c-8eed6bbb8014"
+         },
+         "target":{  
+            "id":"8eea851d-f939-4b70-bd5c-dc8c6a7037cd"
+         },
+         "id":"c408eb1b-1f51-4e41-9158-c21f2b5d59bd",
+         "z":60,
          "attrs":{  
-            "rect":{  
-               "fill":"#dcd7d7",
-               "stroke":"#3c4260",
-               "width":50,
-               "height":30,
-               "rx":2,
-               "ry":2,
-               "stroke-width":3,
-               "stroke-dasharray":"0"
-            },
-            "text":{  
-               "fill":"#3c4260",
-               "text":"Floor Marshals\\nbrief Crisis\\nManagement\\nTeam using floor\\nplans",
-               "font-size":13,
-               "font-family":"Roboto Condensed",
-               "font-weight":"Normal",
-               "stroke-width":0
-            },
-            ".":{  
-               "data-tooltip-position":"left",
-               "data-tooltip-position-selector":".joint-stencil"
-            }
+
+         }
+      },
+      {  
+         "type":"app.Link",
+         "router":{  
+            "name":"normal"
+         },
+         "connector":{  
+            "name":"normal"
+         },
+         "source":{  
+            "id":"8eea851d-f939-4b70-bd5c-dc8c6a7037cd"
+         },
+         "target":{  
+            "id":"c89958a4-a6b6-41b0-88d2-a2ab3b5ce4cx"
+         },
+         "id":"59b5221e-f031-40c1-9b9a-70359c6e6808",
+         "z":60,
+         "attrs":{  
+
+         }
+      },
+      {  
+         "type":"app.Link",
+         "router":{  
+            "name":"normal"
+         },
+         "connector":{  
+            "name":"normal"
+         },
+         "source":{  
+            "id":"8eea851d-f939-4b70-bd5c-dc8c6a7037cd"
+         },
+         "target":{  
+            "id": "c89958a4-a6b6-41b0-88d2-a2ab3b5ce4ca"
+         },
+         "id":"59b5221e-f031-40c1-9b9a-70359c6e6810",
+         "z":60,
+         "attrs":{  
+
          }
       }
    ]
 }
 
-module.exports = data;
+
+module.exports = Data;

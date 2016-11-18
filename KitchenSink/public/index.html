@@ -7,6 +7,11 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/theme-picker.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <style>
+      .custom-btn {
+        background: red;
+      }
+    </style>
 </head>
 <body>
 
@@ -14,6 +19,7 @@
         <div class="app-header">
               <div class="app-title">
                   <h1>Rappid</h1>
+                  <h1 class="custom-btn">Custom Button</h1>
               </div>
               <div class="toolbar-container"></div>
         </div>
@@ -51,11 +57,7 @@
     <script src="./js/views/theme-picker.js"></script>
     <script src="./js/models/joint.shapes.app.js"></script>
     <script>
-        joint.setTheme('modern');
-        app = new App.MainView({ el: '#app' });
-        themePicker = new App.ThemePicker({ mainView: app });
-        themePicker.render().$el.appendTo(document.body);
-        app.graph.fromJSON(JSON.parse(App.config.sampleGraphs.emergencyProcedure));
+        
     </script>
 
     <!-- Local file warning: -->
@@ -82,13 +84,17 @@
             $.ajax({
               url: "api/data",
               success: function(res){
-                console.log(res);
+                // console.log(res);
+                joint.setTheme('modern');
+                app = new App.MainView({ el: '#app' });
+                themePicker = new App.ThemePicker({ mainView: app });
+                themePicker.render().$el.appendTo(document.body);
+                app.graph.fromJSON(res);
               },
               error: function(err){
                 console.log(err);
               },
-          });
-            
+          });      
         });    
     </script>
 </body>

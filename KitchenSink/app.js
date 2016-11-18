@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-// var mattsProcedure = require('./data');
+var Data = require('./data');
 var app = express();
 
 app.use(express.static(__dirname));
@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 	 res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 app.get('/api/data', function(req, res) {
-	res.json({date: "hey"});
+	res.json(Data);
 });
 app.post('/api/data', function(req, res, next){
 	console.log(req.body);
