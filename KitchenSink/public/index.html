@@ -97,8 +97,10 @@
             }
           });
           $('#custom-btn').on('click', function() {
+            var svg = $('#v-2').toArray();
             $.ajax({
-              url: "api/data",
+              url: "savePaper.php",
+              data: $('#v-2').toArray(),
               success: function(res){
                 alert(res);
               },
