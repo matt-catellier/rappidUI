@@ -50,7 +50,6 @@
     <script src="./js/config/inspector.js"></script>
     <script src="./js/config/stencil.js"></script>
     <script src="./js/config/toolbar.js"></script>
-    <script src="./js/config/sample-graphs.js"></script>
     <script src="./js/views/main.js"></script>
     <script src="./js/views/theme-picker.js"></script>
     <script src="./js/models/joint.shapes.app.js"></script>
