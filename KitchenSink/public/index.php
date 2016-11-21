@@ -14,7 +14,6 @@
     </style>
 </head>
 <body>
-
     <div id="app">
         <div class="app-header">
               <div class="app-title">
@@ -30,13 +29,12 @@
               <div class="navigator-container"></div>
         </div>
     </div>
-
     <!-- Rappid/JointJS dependencies: -->
-    <script src="../../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../../node_modules/lodash/index.js"></script>
-    <script src="../../node_modules/backbone/backbone.js"></script>
-    <script src="../../node_modules/graphlib/dist/graphlib.core.js"></script>
-    <script src="../../node_modules/dagre/dist/dagre.core.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/lodash/index.js"></script>
+    <script src="../node_modules/backbone/backbone.js"></script>
+    <script src="../node_modules/graphlib/dist/graphlib.core.js"></script>
+    <script src="../node_modules/dagre/dist/dagre.core.js"></script>
 
     <script src="./build/rappid.min.js"></script>
 
@@ -57,7 +55,7 @@
     <script src="./js/views/theme-picker.js"></script>
     <script src="./js/models/joint.shapes.app.js"></script>
     <script>
-        
+
     </script>
 
     <!-- Local file warning: -->
@@ -79,38 +77,63 @@
             }
         })();
     </script>
+    <?php
+      session_start();
+      if(empty($_COOKIE['strong_id'])) {
+        $SALT = "ERTtt44";
+        $strong_id =  SALT . $_SERVER["REMOTE_ADDR"] . SALT;
+        if(empty($_COOKIE['strong_id'])) {
+          setcookie("strong_id", $strong_id);
+        } 
+      }
+    ?>
+    <?php
+      echo "<script>
+        $(function() {
+            $.ajax({
+                method:'GET',
+                dataType: 'JSON',
+                url: '../authorize.php',
+                success: function(res){
+                  if(res.message) {
+                    alert(res.message);
+                    return;
+                  }
+                  joint.setTheme('modern');
+                  app = new App.MainView({ el: '#app' });
+                  themePicker = new App.ThemePicker({ mainView: app });
+                  themePicker.render().\$el.appendTo(document.body);
+                  app.graph.fromJSON($.parseJSON(res));
+                },
+                error: function(err){
+                  console.log(err);
+                }
+              });
+        });    
+      </script>";
+    ?>
+     
     <script>
         $(function(){
-          $.ajax({
-            method:"GET",
-            url: "api/data",
-            success: function(res){
-              // console.log(res);
-              joint.setTheme('modern');
-              app = new App.MainView({ el: '#app' });
-              themePicker = new App.ThemePicker({ mainView: app });
-              themePicker.render().$el.appendTo(document.body);
-              app.graph.fromJSON(res);
-            },
-            error: function(err){
-              console.log(err);
-            }
-          });
           $('#custom-btn').on('click', function() {
-            var svg = $('#v-2').toArray();
+            console.log($(app.graph.attributes.cells));
             $.ajax({
-              url: "savePaper.php",
-              data: $('#v-2').toArray(),
+              type: "POST",
+              url: '../authorize.php',
+              data: {
+                'paper': app.graph.attributes.cells
+              },
+              contentType: 'application/json',
               success: function(res){
-                alert(res);
+                console.log(res);
               },
               error: function(err){
                 console.log(err);
               }
-            });   
-          });  
+            });
+          });
 
-        });    
-    </script>
+        });
+    </script> 
 </body>
 </html>

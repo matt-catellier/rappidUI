@@ -1,4 +1,4 @@
-var EmergencyProcedure = {
+{
    "cells":[
       {
          "type":"basic.Circle",
@@ -1453,5 +1453,3 @@ var EmergencyProcedure = {
       }
    ]
 }
-
-module.exports = EmergencyProcedure;
