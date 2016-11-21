@@ -7,11 +7,12 @@ Project built using LAMP stack, and PHP for backend.  Using jQuery and Rappid.js
 2. Add a button to the top toolbar to save the existing chart as JSON, also over ajax, to a PHP endpoint. You can write to a flat file for now. 
 
 ## Onboard 
-1. change to directory on your local APACHE server.  Make sure apache server is running. 
-2. git clone https://github.com/matt-catellier/rappidUI.git 
-3. cd KitchecnSink 3 
-4. npm install
-4. go to local host with patch /KitchenSink/public
+1. Install node and npm package manager.
+2. change to directory on your local APACHE server.  Make sure apache server is running. 
+3. git clone https://github.com/matt-catellier/rappidUI.git 
+4. cd KitchecnSink 3 
+5. npm install
+6. go to local host with patch /KitchenSink/public
 
 NOTE:
 * make sure you have read, write, execute permissions on the folder you store it in
