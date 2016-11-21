@@ -1,3 +1,4 @@
 /KitchenSink/node_modules/
+/KitchenSink/uploads/
 .DS_Store
 npm-debug.log

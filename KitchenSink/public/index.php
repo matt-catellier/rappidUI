@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/theme-picker.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <style>
-      #custom-btn {
+      #custom-btn-xd4r {
         background: red;
       }
     </style>
@@ -18,7 +18,7 @@
         <div class="app-header">
               <div class="app-title">
                   <h1>Rappid</h1>
-                  <h1 id="custom-btn">Custom Button</h1>
+                  <h1 id="custom-btn-xd4r">Custom Button</h1>
               </div>
               <div class="toolbar-container"></div>
         </div>
@@ -78,57 +78,47 @@
         })();
     </script>
     <?php
-      session_start();
-      if(empty($_COOKIE['strong_id'])) {
-        $SALT = "ERTtt44";
-        $strong_id =  SALT . $_SERVER["REMOTE_ADDR"] . SALT;
-        if(empty($_COOKIE['strong_id'])) {
-          setcookie("strong_id", $strong_id);
-        } 
-      }
-    ?>
-    <?php
-      echo "<script>
-        $(function() {
-            $.ajax({
-                method:'GET',
-                dataType: 'JSON',
-                url: '../authorize.php',
-                success: function(res){
-                  if(res.message) {
-                    alert(res.message);
-                    return;
-                  }
-                  joint.setTheme('modern');
-                  app = new App.MainView({ el: '#app' });
-                  themePicker = new App.ThemePicker({ mainView: app });
-                  themePicker.render().\$el.appendTo(document.body);
-                  app.graph.fromJSON($.parseJSON(res));
-                },
-                error: function(err){
-                  console.log(err);
-                }
-              });
-        });    
-      </script>";
-    ?>
-     
+        if(isset($_COOKIE["errors"])) {
+          echo $_COOKIE["errors"];
+          unset($_COOKIE["errors"]);
+        }
+        ?>
     <script>
         $(function(){
-          $('#custom-btn').on('click', function() {
-            console.log($(app.graph.attributes.cells));
+          $.ajax({
+            method:"GET",
+            dataType: "JSON",
+            url: '../getEmergencyProcedure.php',
+            success: function(res){
+              if(res.message) {
+                alert(res.message);
+                return;
+              }
+              joint.setTheme('modern');
+              app = new App.MainView({ el: '#app' });
+              themePicker = new App.ThemePicker({ mainView: app });
+              themePicker.render().$el.appendTo(document.body);
+              app.graph.fromJSON($.parseJSON(res));
+            },
+            error: function(err){
+              console.log(err);
+            }
+          });
+
+          $('#custom-btn-xd4r').on('click', function(e) {
             $.ajax({
               type: "POST",
-              url: '../authorize.php',
+              url: '../savePaper.php',
               data: {
-                'paper': app.graph.attributes.cells
+                'paper': JSON.stringify(app.graph.attributes)
               },
-              contentType: 'application/json',
               success: function(res){
-                console.log(res);
+                console.log($.parseJSON(res));
+                alert('Successfully saved.');
               },
               error: function(err){
                 console.log(err);
+                alert('Check console for error');
               }
             });
           });
